@@ -228,6 +228,46 @@
             font-size: 0.9rem;
             color: #a8b2d1;
         }
+        
+        /* Responsive Styles */
+        @media (max-width: 1080px) {
+            #main, section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 2rem;
+            }
+
+            #main {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .section-heading::after {
+                width: 100px;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none; /* Hide for now, can be replaced with a hamburger menu */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #main {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            section {
+                padding: 4rem 1rem;
+            }
+        }
+
     </style>
 </head>
 
