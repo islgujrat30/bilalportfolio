@@ -250,6 +250,20 @@ footer {
     color: #a8b2d1;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--highlight-color);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
 /* Responsive Styles */
 @media (max-width: 1080px) {
     #main, section {
@@ -260,6 +274,29 @@ footer {
 @media (max-width: 768px) {
     header {
         padding: 1.5rem 2rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: var(--secondary-color);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav li {
+        margin: 1rem 0;
+        text-align: center;
     }
 
     #main {
@@ -289,8 +326,12 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    nav ul {
-        display: none; /* Hide for now, can be replaced with a hamburger menu */
+    .contact-details {
+        flex-direction: column;
+    }
+
+    .contact-item {
+        margin-bottom: 2rem;
     }
 }
 
