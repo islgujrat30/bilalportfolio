@@ -86,6 +86,27 @@ nav a:hover::after {
     justify-content: center;
 }
 
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-image {
+    flex-basis: 300px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid var(--highlight-color);
+}
+
 .hero h1 {
     font-size: clamp(40px, 8vw, 80px);
     color: #e6f1ff;
@@ -115,6 +136,8 @@ nav a:hover::after {
     line-height: 1;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    margin-top: 2rem;
+    display: inline-block;
 }
 
 .btn:hover {
@@ -241,6 +264,21 @@ footer {
 
     #main {
         padding: 8rem 2rem 4rem;
+    }
+    
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-image {
+        margin-bottom: 2rem;
+        max-width: 200px;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .section-heading::after {
