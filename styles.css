@@ -99,12 +99,17 @@ nav a:hover::after {
 
 .hero-image {
     flex-basis: 300px;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    border: 2px solid var(--highlight-color);
+    overflow: hidden;
 }
 
 .hero-image img {
     width: 100%;
-    border-radius: 8px;
-    border: 2px solid var(--highlight-color);
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
 }
 
 .hero h1 {
