@@ -5,22 +5,19 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "AI Chatbot",
             description: "A conversational AI built to assist users with various tasks and inquiries, providing a seamless and interactive experience.",
             imageUrl: "1.jfif",
-            githubUrl: "#",
-            liveDemoUrl: "#"
+            githubUrl: "https://github.com/islgujrat30/bilalportfolio",
         },
         {
             title: "E-commerce Website",
             description: "A fully functional online store with features like product browsing, shopping cart, and a secure checkout process, built with modern web technologies.",
             imageUrl: "2.jfif",
-            githubUrl: "#",
-            liveDemoUrl: "#"
+            githubUrl: "https://github.com/islgujrat30/bilalportfolio",
         },
         {
             title: "Portfolio Website",
             description: "A personal portfolio to showcase my skills and projects. Designed to be clean, modern, and fully responsive across all devices.",
             imageUrl: "3.jfif",
-            githubUrl: "#",
-            liveDemoUrl: "#"
+            githubUrl: "https://github.com/islgujrat30/bilalportfolio",
         }
     ];
 
@@ -39,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
                 <div class="project-links">
                     <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="${project.liveDemoUrl}" target="_blank" rel="noopener noreferrer">Live Demo</a>
                 </div>
             </div>
         `;
