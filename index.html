@@ -170,12 +170,22 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 2rem 1.75rem;
         }
         
         .work-item:hover {
             transform: translateY(-7px);
+        }
+
+        .work-item img {
+            max-width: 100%;
+        }
+
+        .work-item-content {
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
         }
         
         .work-item h3 {
@@ -303,33 +313,42 @@
         <h2 class="section-heading">Some Things I've Built</h2>
         <div class="work-grid">
             <div class="work-item">
-                <div>
-                    <h3>Project One</h3>
-                    <p>A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.</p>
-                </div>
-                <div class="project-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                <img src="https://placehold.co/600x400/0a192f/64ffda?text=Project+One" alt="Project One">
+                <div class="work-item-content">
+                    <div>
+                        <h3>Project One</h3>
+                        <p>A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </div>
                 </div>
             </div>
             <div class="work-item">
-                 <div>
-                    <h3>Project Two</h3>
-                    <p>A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.</p>
-                </div>
-                <div class="project-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                 <img src="https://placehold.co/600x400/0a192f/64ffda?text=Project+Two" alt="Project Two">
+                 <div class="work-item-content">
+                     <div>
+                        <h3>Project Two</h3>
+                        <p>A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </div>
                 </div>
             </div>
              <div class="work-item">
-                 <div>
-                    <h3>Project Three</h3>
-                    <p>A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.</p>
-                </div>
-                <div class="project-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                 <img src="https://placehold.co/600x400/0a192f/64ffda?text=Project+Three" alt="Project Three">
+                 <div class="work-item-content">
+                     <div>
+                        <h3>Project Three</h3>
+                        <p>A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </div>
                 </div>
             </div>
         </div>
