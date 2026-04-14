@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Bilal - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         :root {
             --primary-color: #00aeff;
@@ -201,25 +202,22 @@
             line-height: 1.6;
         }
         
-        form {
+        .contact-details {
             display: flex;
-            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        input, textarea {
-            background-color: #112240;
-            border: 1px solid #233554;
-            color: var(--text-color);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-            font-size: 1rem;
+        .contact-item {
+            text-align: center;
         }
-        
-        textarea {
-            min-height: 150px;
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--highlight-color);
+            margin-bottom: 1rem;
         }
 
         footer {
@@ -339,12 +337,20 @@
 
     <section id="contact">
         <h2 class="section-heading">Get In Touch</h2>
-        <form>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
+        <div class="contact-details">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p>+92325-8125893</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>m.bilalfaz450@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Kharian,Gujrat, Pakistan</p>
+            </div>
+        </div>
     </section>
 
     <footer>
