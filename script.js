@@ -2,23 +2,23 @@
 document.addEventListener("DOMContentLoaded", function() {
     const projects = [
         {
-            title: "Project One",
-            description: "A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.",
-            imageUrl: "https://placehold.co/600x400/0a192f/64ffda?text=Project+One",
+            title: "AI Chatbot",
+            description: "A conversational AI built to assist users with various tasks and inquiries, providing a seamless and interactive experience.",
+            imageUrl: "1.jfif",
             githubUrl: "#",
             liveDemoUrl: "#"
         },
         {
-            title: "Project Two",
-            description: "A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.",
-            imageUrl: "https://placehold.co/600x400/0a192f/64ffda?text=Project+Two",
+            title: "E-commerce Website",
+            description: "A fully functional online store with features like product browsing, shopping cart, and a secure checkout process, built with modern web technologies.",
+            imageUrl: "2.jfif",
             githubUrl: "#",
             liveDemoUrl: "#"
         },
         {
-            title: "Project Three",
-            description: "A web app for visualizing personalized Spotify data. Both public and private views were built using React, with all data stored in a private Firebase database.",
-            imageUrl: "https://placehold.co/600x400/0a192f/64ffda?text=Project+Three",
+            title: "Portfolio Website",
+            description: "A personal portfolio to showcase my skills and projects. Designed to be clean, modern, and fully responsive across all devices.",
+            imageUrl: "3.jfif",
             githubUrl: "#",
             liveDemoUrl: "#"
         }
