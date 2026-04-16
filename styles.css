@@ -290,6 +290,22 @@ footer {
     color: #a8b2d1;
 }
 
+.social-media {
+    margin-bottom: 1rem;
+}
+
+.social-media a {
+    color: var(--text-color);
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--highlight-color);
+}
+
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
