@@ -24,7 +24,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 2rem 2rem;
     position: fixed;
     width: 100%;
     top: 0;
@@ -50,7 +50,7 @@ nav ul {
 }
 
 nav li {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
 }
 
 nav a {
