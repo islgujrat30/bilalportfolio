@@ -51,15 +51,41 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const typingText = document.getElementById('typing-text');
-    const text = "I turn real-world problems into scalable products.";
-    let index = 0;
+    const phrases = ["automation systems", "SaaS products", "business tools"];
+    let phraseIndex = 0;
+    let letterIndex = 0;
+    let isDeleting = false;
 
     function type() {
-        if (index < text.length) {
-            typingText.textContent += text.charAt(index);
-            index++;
-            setTimeout(type, 100);
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            // Erase text
+            typingText.textContent = currentPhrase.substring(0, letterIndex - 1);
+            letterIndex--;
+        } else {
+            // Type text
+            typingText.textContent = currentPhrase.substring(0, letterIndex + 1);
+            letterIndex++;
         }
+
+        let typeSpeed = 150;
+        if (isDeleting) {
+            typeSpeed /= 2; // Faster when deleting
+        }
+
+        if (!isDeleting && letterIndex === currentPhrase.length) {
+            // Pause at the end of the phrase
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && letterIndex === 0) {
+            // Move to the next phrase
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(type, typeSpeed);
     }
 
     type();
