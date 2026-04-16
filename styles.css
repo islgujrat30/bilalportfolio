@@ -46,6 +46,7 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 nav li {
@@ -311,6 +312,7 @@ footer {
 .hamburger {
     display: none;
     cursor: pointer;
+    margin-right: 1rem;
 }
 
 .hamburger .line {
@@ -345,6 +347,7 @@ footer {
         top: 70px;
         left: 0;
         background-color: var(--secondary-color);
+        text-align: center;
     }
 
     nav ul.active {
