@@ -49,4 +49,18 @@ document.addEventListener("DOMContentLoaded", function() {
     hamburger.addEventListener('click', () => {
         navUl.classList.toggle('active');
     });
+
+    const typingText = document.getElementById('typing-text');
+    const text = "I turn real-world problems into scalable products.";
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            typingText.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+
+    type();
 });
