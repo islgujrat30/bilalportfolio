@@ -127,6 +127,7 @@ nav a:hover::after {
     font-size: clamp(40px, 8vw, 60px);
     color: #a8b2d1;
     margin-top: 10px;
+    font-weight: 400;
 }
 
 .hero p {
