@@ -336,6 +336,9 @@ footer {
     header {
         padding: 1rem;
     }
+    nav {
+        display: none;
+    }
 
     .hamburger {
         display: flex;
