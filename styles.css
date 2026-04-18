@@ -340,6 +340,10 @@ footer {
     .hamburger {
         display: block;
     }
+    
+    nav {
+        position: absolute;
+    }
 
     nav ul {
         display: none;
