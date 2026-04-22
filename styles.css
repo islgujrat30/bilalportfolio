@@ -269,6 +269,57 @@ section {
     line-height: 1.6;
 }
 
+/* Experience Section */
+.experience-item {
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+.experience-item:hover {
+    transform: translateY(-7px);
+}
+
+.experience-item h3 {
+    color: #e6f1ff;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.experience-details {
+    color: var(--highlight-color);
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.experience-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-item li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.experience-item li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--highlight-color);
+}
+
 .contact-details {
     display: flex;
     justify-content: space-around;
@@ -407,6 +458,10 @@ footer {
     .contact-item {
         margin-bottom: 2rem;
     }
+    
+    .experience-item {
+        padding: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -417,6 +472,11 @@ footer {
     section {
         padding: 4rem 1rem;
     }
+
+    .social-media a {
+        margin: 0 0.5rem;
+        font-size: 1.2rem;
+    }
 }
 
 .contact-button {
@@ -425,4 +485,20 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: all 0.3s ease;
+}
+
+/* Gallery Section Responsive */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #gallery-work {
+        padding: 4rem 1rem;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
 }

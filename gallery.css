@@ -7,8 +7,9 @@
 }
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -20,6 +21,7 @@
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     overflow: hidden;
     cursor: pointer;
+    width: 300px;
 }
 
 .gallery-item:hover {
