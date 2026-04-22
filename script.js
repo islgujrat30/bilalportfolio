@@ -47,13 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const galleryItems = [
         {
-            title: "Graphics Design 1",
-            description: "This is a sample description for a graphics design project.",
+            title: "Certificate 1",
+            description: "This is my first certificate.",
             imageUrl: "1.jfif"
         },
         {
-            title: "Graphics Design 2",
-            description: "This is a sample description for a graphics design project.",
+            title: "Certificate 2",
+            description: "This is my second certificate.",
             imageUrl: "2.jfif"
         },
         {
