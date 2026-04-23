@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="/bilalportfolio/manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
 </head>
 
@@ -138,7 +138,7 @@
     <script src="script.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/bilalportfolio/sw.js', { scope: '/bilalportfolio/' })
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
             .then(function(registration) {
                 console.log('Service Worker registered with scope:', registration.scope);
             })
