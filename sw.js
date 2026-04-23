@@ -2,11 +2,12 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('portfolio-cache').then(function(cache) {
       return cache.addAll([
-        '/',
-        'index.html',
-        'styles.css',
-        'script.js',
-        'bilal.jpg'
+        '/bilalportfolio/',
+        '/bilalportfolio/index.html',
+        '/bilalportfolio/styles.css',
+        '/bilalportfolio/script.js',
+        '/bilalportfolio/bilal.jpg',
+        '/bilalportfolio/manifest.json'
       ]);
     })
   );
