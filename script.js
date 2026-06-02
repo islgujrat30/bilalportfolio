@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     const projects = [
         {
@@ -47,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const galleryItems = [
         {
-            title: "Certificate 1",
-            description: "This is my first certificate.",
-            imageUrl: "ch1.png"
+            title: "Leadership & Management Certification",
+            description: "Demonstrated skills in professional project execution, resource management, and team leadership.",
+            imageUrl: "https://images.unsplash.com/photo-1589330694653-ded6df03f754?q=80&w=800&auto=format&fit=crop"
         },
         {
-            title: "Certificate 2",
-            description: "This is my second certificate.",
-            imageUrl: "ch2.png"
+            title: "Advanced Information Technology Operations",
+            description: "Specialized training in IT systems architecture, network troubleshooting, and security controls.",
+            imageUrl: "https://images.unsplash.com/photo-1541829019-259276a7f4fd?q=80&w=800&auto=format&fit=crop"
         }
     ];
 
@@ -97,10 +96,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
     const navUl = document.querySelector('nav ul');
 
-    if (hamburger) {
+    if (hamburger && nav) {
         hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
             navUl.classList.toggle('active');
         });
     }
@@ -142,4 +143,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         type();
     }
+
+    const animatedElements = document.querySelectorAll('.hero h1, .hero h2, .section-heading');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    animatedElements.forEach(element => {
+        element.style.animationPlayState = 'paused';
+        observer.observe(element);
+    });
 });
