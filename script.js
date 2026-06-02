@@ -51,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
             imageUrl: "certificate_web_dev.jpg"
         },
         {
-            title: "Advanced Information Technology Operations",
-            description: "Specialized training in IT systems architecture, network troubleshooting, and security controls.",
-            imageUrl: "https://images.unsplash.com/photo-1541829019-259276a7f4fd?q=80&w=800&auto=format&fit=crop"
+            title: "Google AI Professional Certificate",
+            description: "Earned the Google AI Professional Certificate via Coursera (June 1, 2026). Completed 7 courses covering AI fundamentals, brainstorming, research, writing, content creation, data analysis, and app building.",
+            imageUrl: "certificate_google_ai.png"
         }
     ];
 
