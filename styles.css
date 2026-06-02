@@ -1,5 +1,11 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 :root {
@@ -162,19 +168,21 @@ nav a:hover::after {
 
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(45px, 7vw, 75px);
+    font-size: clamp(32px, 7vw, 75px);
     font-weight: 800;
     color: var(--text-primary);
     line-height: 1.1;
     margin: 0 0 10px 0;
+    word-wrap: break-word;
 }
 
 .hero h2 {
     font-family: var(--font-heading);
-    font-size: clamp(30px, 4.5vw, 45px);
+    font-size: clamp(20px, 4.5vw, 45px);
     color: var(--text-muted);
     margin: 0 0 20px 0;
     font-weight: 600;
+    word-wrap: break-word;
 }
 
 #typing-text {
@@ -329,6 +337,8 @@ section {
     font-family: var(--font-code);
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 .experience-item ul {
@@ -357,7 +367,7 @@ section {
 /* Skills Grid Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 2rem;
 }
 
@@ -400,7 +410,7 @@ section {
 /* Certificates Grid Section */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -454,7 +464,7 @@ section {
 /* Work (Projects) Grid Section */
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -567,6 +577,8 @@ section {
     color: var(--text-primary);
     font-family: var(--font-heading);
     font-weight: 500;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 /* Footer Section */
@@ -768,27 +780,35 @@ footer {
 
 @media (max-width: 480px) {
     #main {
-        padding: 7rem 1.5rem 3rem;
+        padding: 6rem 1rem 3rem;
     }
 
     section {
-        padding: 5rem 1.5rem;
+        padding: 4rem 1rem;
     }
 
     .hero h1 {
-        font-size: 34px;
+        font-size: 28px;
     }
 
     .hero-image {
-        max-width: 180px;
+        max-width: 160px;
     }
 
     .experience-item {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .social-media a {
-        margin: 0 0.8rem;
-        font-size: 1.4rem;
+        margin: 0 0.6rem;
+        font-size: 1.3rem;
+    }
+
+    .section-heading {
+        font-size: 1.8rem;
+    }
+
+    .section-heading::after {
+        display: none;
     }
 }
