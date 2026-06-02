@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const galleryItems = [
         {
-            title: "Leadership & Management Certification",
-            description: "Demonstrated skills in professional project execution, resource management, and team leadership.",
-            imageUrl: "https://images.unsplash.com/photo-1589330694653-ded6df03f754?q=80&w=800&auto=format&fit=crop"
+            title: "Website Development Certification",
+            description: "Successfully completed professional web development training at the ITS Training Centre, certified on May 30, 2024.",
+            imageUrl: "certificate_web_dev.jpg"
         },
         {
             title: "Advanced Information Technology Operations",
