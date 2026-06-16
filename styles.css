@@ -134,6 +134,9 @@ nav a:hover::after {
     flex-direction: column;
     gap: 6px;
     z-index: 1100;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .hamburger .line {
@@ -687,13 +690,13 @@ footer {
     }
 
     /* Mobile hamburger active animations */
-    nav.active + .hamburger .line:nth-child(1) {
+    .hamburger.active .line:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
-    nav.active + .hamburger .line:nth-child(2) {
+    .hamburger.active .line:nth-child(2) {
         opacity: 0;
     }
-    nav.active + .hamburger .line:nth-child(3) {
+    .hamburger.active .line:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
 

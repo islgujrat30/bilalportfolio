@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
         hamburger.addEventListener('click', () => {
             nav.classList.toggle('active');
             navUl.classList.toggle('active');
+            hamburger.classList.toggle('active');
         });
     }
 
