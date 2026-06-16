@@ -9,16 +9,16 @@ html {
 }
 
 :root {
-    /* Sophisticated Dark Mode Slate Theme */
+    /* Sophisticated Dark Mode Slate Theme with Glassmorphism */
     --bg-color: hsl(222, 47%, 4%);
-    --card-bg: hsl(223, 47%, 9%);
-    --card-hover-border: rgba(100, 255, 218, 0.2);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-hover-border: rgba(100, 255, 218, 0.4);
     --text-primary: hsl(217, 92%, 90%);
     --text-muted: hsl(218, 15%, 65%);
     --highlight: hsl(166, 100%, 70%); /* Electric Mint / Teal */
-    --glow-color: rgba(100, 255, 218, 0.15);
+    --glow-color: rgba(100, 255, 218, 0.2);
     --accent-purple: hsl(263, 90%, 70%);
-    --border-color: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
     --font-heading: 'Outfit', 'Roboto', sans-serif;
     --font-text: 'Roboto', sans-serif;
     --font-code: 'Fira Code', 'Roboto Mono', monospace;
@@ -54,6 +54,46 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+}
+
+/* Abstract Background Blobs for Glassmorphism */
+.bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.5;
+    pointer-events: none;
+}
+.blob-1 {
+    width: 450px;
+    height: 450px;
+    background: var(--highlight);
+    top: -150px;
+    left: -150px;
+}
+.blob-2 {
+    width: 550px;
+    height: 550px;
+    background: var(--accent-purple);
+    bottom: -200px;
+    right: -150px;
+}
+.blob-3 {
+    width: 400px;
+    height: 400px;
+    background: rgba(30, 144, 255, 0.6);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+}
+
+/* Apply Glassmorphism Base to all Cards */
+.experience-item, .skill-item, .gallery-item, .work-item, .contact-item {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* Header & Glassmorphic Navigation */
