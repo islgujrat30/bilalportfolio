@@ -23,7 +23,7 @@ const useIntersectionObserver = (options) => {
 };
 
 const SectionHeading = ({ children }) => (
-  <div className="flex items-center mb-12 animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 ease-out">
+  <div className="flex items-center mb-12 transition-all duration-700 ease-out">
     <h2 className="font-['Outfit'] text-[2.2rem] font-bold text-[var(--color-primary)]">
       {children}
     </h2>
