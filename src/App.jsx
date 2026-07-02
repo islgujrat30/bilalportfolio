@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import TechStack from './TechStack';
 
 const useIntersectionObserver = (options) => {
   const [elements, setElements] = useState([]);
@@ -243,6 +244,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <TechStack addToRefs={addToRefs} />
 
       {/* Certificates Section */}
       <section id="certificates" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto">
