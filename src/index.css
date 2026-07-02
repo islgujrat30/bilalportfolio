@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: hsl(222, 47%, 4%);
+  --color-card: rgba(255, 255, 255, 0.03);
+  --color-primary: hsl(217, 92%, 90%);
+  --color-muted: hsl(218, 15%, 65%);
+  --color-highlight: hsl(166, 100%, 70%);
+  --color-accent: hsl(263, 90%, 70%);
+  
+  --font-heading: 'Outfit', 'Roboto', sans-serif;
+  --font-text: 'Roboto', sans-serif;
+  --font-code: 'Fira Code', 'Roboto Mono', monospace;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-family: var(--font-text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(223, 40%, 15%);
+  border-radius: 4px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-highlight);
+}
+
+::selection {
+  background: rgba(100, 255, 218, 0.2);
+  color: var(--color-highlight);
+}
+
+/* Glassmorphism Card Utility */
+@utility glass-card {
+  background-color: var(--color-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility glass-nav {
+  background-color: rgba(3, 7, 18, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--color-highlight); }
+}
+
+.animate-blink {
+  animation: blink 0.75s step-end infinite;
+}
