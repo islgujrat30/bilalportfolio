@@ -256,30 +256,39 @@ function App() {
               </div>
             </div>
 
+            {/* Courses Card */}
+            <div className="glass-card p-[2rem] md:p-[2.5rem] rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(10,15,30,0.6)]">
+              <i className="fas fa-book-open text-[1.8rem] text-[var(--color-highlight)] mb-6 drop-shadow-[0_0_10px_var(--color-glow)]"></i>
+              <h3 className="font-['Outfit'] text-[1.4rem] font-semibold text-[var(--color-primary)] mb-6">Courses</h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
+                  <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1">Web Development</h4>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">Online Course</p>
+                </div>
+              </div>
+            </div>
+
             {/* Certifications Card */}
             <div className="glass-card p-[2rem] md:p-[2.5rem] rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(10,15,30,0.6)]">
               <i className="fas fa-award text-[1.8rem] text-[var(--color-highlight)] mb-6 drop-shadow-[0_0_10px_var(--color-glow)]"></i>
               <h3 className="font-['Outfit'] text-[1.4rem] font-semibold text-[var(--color-primary)] mb-6">Certifications</h3>
               
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
-                  <div>
-                    <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)]">Google AI Professional Certificate</h4>
-                    <p className="text-[var(--color-muted)] text-[0.95rem]">Coursera</p>
-                  </div>
-                  <div className="text-[var(--color-highlight)] font-['Outfit'] font-medium text-[0.95rem] mt-2 md:mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)] relative">
+                  <div className="absolute top-4 right-4 text-[var(--color-highlight)] font-['Outfit'] font-medium text-[0.85rem]">
                     June 2026
                   </div>
+                  <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1 pr-16">Google AI Professional Certificate</h4>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">Coursera</p>
                 </div>
                 
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
-                  <div>
-                    <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)]">Website Development Certification</h4>
-                    <p className="text-[var(--color-muted)] text-[0.95rem]">ITS Training Centre</p>
-                  </div>
-                  <div className="text-[var(--color-highlight)] font-['Outfit'] font-medium text-[0.95rem] mt-2 md:mt-0">
+                <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)] relative">
+                  <div className="absolute top-4 right-4 text-[var(--color-highlight)] font-['Outfit'] font-medium text-[0.85rem]">
                     May 2024
                   </div>
+                  <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1 pr-16">Website Development Certification</h4>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">ITS Training Centre</p>
                 </div>
               </div>
             </div>
