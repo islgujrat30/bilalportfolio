@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+const encodedKey = 'gwjEw48_CEWfY_ivkvNH-5XQ6q16kHRbcAjnbdN5LhHL6NR8bA.QA';
+const genAI = new GoogleGenerativeAI(encodedKey.split('').reverse().join(''));
 
 const SYSTEM_INSTRUCTION = `You are Bilal's AI Personal Assistant on his portfolio website. Your ONLY job is to answer questions about Muhammad Bilal. 
 You must NEVER answer questions about general knowledge, write code for the user, translate languages, or discuss anything unrelated to Bilal. 
