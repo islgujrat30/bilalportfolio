@@ -264,7 +264,22 @@ function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
                   <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1">Web Development</h4>
-                  <p className="text-[var(--color-muted)] text-[0.95rem]">Online Course</p>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">ITS Training Centre</p>
+                </div>
+                
+                <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
+                  <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1">Urdu AI Automation</h4>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">URDU AI</p>
+                </div>
+                
+                <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
+                  <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1">Google AI Professional</h4>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">Google on Coursera</p>
+                </div>
+                
+                <div className="flex flex-col p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
+                  <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)] mb-1">Python</h4>
+                  <p className="text-[var(--color-muted)] text-[0.95rem]">Sheryians Coding School</p>
                 </div>
               </div>
             </div>
