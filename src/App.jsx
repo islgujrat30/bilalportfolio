@@ -439,8 +439,8 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center py-16 px-8 border-t border-[rgba(255,255,255,0.1)] text-[0.95rem] text-[var(--color-muted)]">
-        <div className="mb-6 space-x-8">
+      <footer className="text-center py-8 px-8 border-t border-[rgba(255,255,255,0.1)] text-[0.95rem] text-[var(--color-muted)]">
+        <div className="mb-4 space-x-8">
           <a href="https://www.facebook.com/share/1bVtnrFUpq/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:text-[var(--color-highlight)] hover:-translate-y-1 inline-block text-[1.6rem] transition-all"><i className="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/mbilalfazofficial?igsh=dnlxM2JyODh0ZXZq" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:text-[var(--color-highlight)] hover:-translate-y-1 inline-block text-[1.6rem] transition-all"><i className="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/in/m-bilal-fazal?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="text-[var(--color-primary)] hover:text-[var(--color-highlight)] hover:-translate-y-1 inline-block text-[1.6rem] transition-all"><i className="fab fa-linkedin-in"></i></a>
