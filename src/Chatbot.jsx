@@ -54,9 +54,9 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
-      // Use Gemini 1.5 Flash as it's fast and supports system instructions
+      // Use Gemini 2.5 Flash as it's available for this API key
       const model = genAI.getGenerativeModel({ 
-        model: "gemini-1.5-flash",
+        model: "gemini-2.5-flash",
         systemInstruction: SYSTEM_INSTRUCTION
       });
 
