@@ -73,7 +73,7 @@ export default function Chatbot() {
       setMessages(prev => [...prev, { role: 'model', text: response.text() }]);
     } catch (error) {
       console.error("Chatbot Error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: \`Connection Error: \${error.message}\` }]);
+      setMessages(prev => [...prev, { role: 'model', text: `Connection Error: ${error.message}` }]);
     } finally {
       setIsLoading(false);
     }
