@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import TechStack from './TechStack';
+import Chatbot from './Chatbot';
 
 const useIntersectionObserver = (options) => {
   const [elements, setElements] = useState([]);
@@ -447,6 +448,9 @@ function App() {
         </div>
         <p>Designed & Built by Muhammad Bilal</p>
       </footer>
+      
+      {/* AI Chatbot Assistant */}
+      <Chatbot />
     </div>
   );
 }
