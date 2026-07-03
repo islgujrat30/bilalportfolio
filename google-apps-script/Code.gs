@@ -19,7 +19,7 @@
 // ============================================================
 
 const OWNER_EMAIL = "bilalfaz666@gmail.com";   // <-- YOUR EMAIL
-const SHEET_ID    = "YOUR_GOOGLE_SHEET_ID_HERE"; // <-- YOUR SHEET ID
+const SHEET_ID    = "1-L2FQXN-DbrqgSDjzV1ABS75bwGadUXXCHcrK00SmlI"; // <-- YOUR SHEET ID
 
 // ---- Main handler ----
 function doPost(e) {

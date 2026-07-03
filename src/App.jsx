@@ -33,7 +33,7 @@ const SectionHeading = ({ children }) => (
 );
 
 // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE after deploying
-const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxG8c0dcRGpgTS5GFQn7H1v6Lqvb6eiP86HF3FrQw0bC7CQYjXyYlsbgN5DMC1CK9eqTQ/exec";
 
 function App() {
   const [isNavActive, setIsNavActive] = useState(false);
