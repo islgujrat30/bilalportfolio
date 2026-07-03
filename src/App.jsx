@@ -32,10 +32,15 @@ const SectionHeading = ({ children }) => (
   </div>
 );
 
+// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE after deploying
+const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+
 function App() {
   const [isNavActive, setIsNavActive] = useState(false);
   const [typingText, setTypingText] = useState("");
   const headingRefs = useRef([]);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formStatus, setFormStatus] = useState("idle"); // idle | loading | success | error
 
   const toggleNav = () => setIsNavActive(!isNavActive);
 
@@ -97,6 +102,23 @@ function App() {
   const addToRefs = (el) => {
     if (el && !headingRefs.current.includes(el)) {
       headingRefs.current.push(el);
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("loading");
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setFormStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      setFormStatus("error");
     }
   };
 
@@ -335,22 +357,83 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[700px] mx-auto text-center">
-        <div ref={addToRefs} className="opacity-0 translate-y-10 transition-all duration-700">
-          <h2 className="font-['Outfit'] text-[2.2rem] font-bold text-[var(--color-primary)] mb-12">Get In Touch</h2>
-          <div className="flex flex-col md:flex-row justify-around items-center gap-6 md:gap-8 mt-12">
-            <div className="glass-card flex-1 p-[2rem] rounded-lg w-full transition-transform duration-300 hover:-translate-y-1">
-              <i className="fas fa-phone text-[2.2rem] text-[var(--color-highlight)] mb-4 drop-shadow-[0_0_15px_var(--color-glow)]"></i>
-              <p className="font-['Outfit'] text-[1.05rem] font-medium text-[var(--color-primary)]">+92325-8125893</p>
-            </div>
-            <div className="glass-card flex-1 p-[2rem] rounded-lg w-full transition-transform duration-300 hover:-translate-y-1">
-              <i className="fas fa-envelope text-[2.2rem] text-[var(--color-highlight)] mb-4 drop-shadow-[0_0_15px_var(--color-glow)]"></i>
-              <p className="font-['Outfit'] text-[1.05rem] font-medium text-[var(--color-primary)] break-all"><a href="mailto:bilalfaz666@gmail.com" className="hover:text-[var(--color-highlight)] transition-colors">bilalfaz666@gmail.com</a></p>
-            </div>
-            <div className="glass-card flex-1 p-[2rem] rounded-lg w-full transition-transform duration-300 hover:-translate-y-1">
-              <i className="fas fa-map-marker-alt text-[2.2rem] text-[var(--color-highlight)] mb-4 drop-shadow-[0_0_15px_var(--color-glow)]"></i>
-              <p className="font-['Outfit'] text-[1.05rem] font-medium text-[var(--color-primary)]">Kharian, Gujrat, Pakistan</p>
-            </div>
+      <section id="contact" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[800px] mx-auto">
+        <div ref={addToRefs} className="opacity-0 translate-y-10 transition-all duration-700 text-center">
+          <p className="text-[var(--color-highlight)] font-['Fira_Code'] text-[0.85rem] tracking-widest uppercase mb-3">Contact</p>
+          <h2 className="font-['Outfit'] text-[3rem] md:text-[4rem] font-extrabold text-[var(--color-primary)] mb-4">Let's build something</h2>
+          <div className="flex items-center justify-center gap-3 text-[var(--color-muted)] mb-10">
+            <i className="fas fa-phone text-[var(--color-highlight)]"></i>
+            <span className="font-['Outfit'] text-[1.05rem]">+92325-8125893</span>
+          </div>
+
+          {/* Form Card */}
+          <div className="glass-card rounded-2xl p-[2rem] md:p-[2.5rem] border border-[rgba(255,255,255,0.08)] bg-[rgba(10,15,30,0.6)] text-left">
+            {formStatus === 'success' ? (
+              <div className="text-center py-12">
+                <div className="w-16 h-16 rounded-full bg-[rgba(100,255,218,0.1)] flex items-center justify-center mx-auto mb-5">
+                  <i className="fas fa-check text-[var(--color-highlight)] text-[2rem]"></i>
+                </div>
+                <h3 className="font-['Outfit'] text-[1.6rem] font-bold text-[var(--color-primary)] mb-3">Message Sent!</h3>
+                <p className="text-[var(--color-muted)] text-[1.05rem] leading-[1.7]">Thank you for reaching out! Check your inbox — a confirmation email is on its way. I'll get back to you within <span className="text-[var(--color-highlight)] font-medium">1–2 hours</span>.</p>
+                <button onClick={() => setFormStatus('idle')} className="mt-8 text-[var(--color-highlight)] font-['Outfit'] font-semibold border border-[var(--color-highlight)] py-2 px-6 rounded-md hover:bg-[rgba(100,255,218,0.08)] transition-all">
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="space-y-6">
+                <div>
+                  <label className="block font-['Outfit'] text-[var(--color-primary)] text-[0.95rem] mb-2" htmlFor="contact-name">Your name</label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    required
+                    placeholder="Muhammad Bilal"
+                    value={formData.name}
+                    onChange={e => setFormData({...formData, name: e.target.value})}
+                    className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl px-5 py-4 text-[var(--color-primary)] font-['Outfit'] text-[1rem] placeholder-[rgba(255,255,255,0.2)] outline-none focus:border-[var(--color-highlight)] focus:bg-[rgba(100,255,218,0.03)] transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block font-['Outfit'] text-[var(--color-primary)] text-[0.95rem] mb-2" htmlFor="contact-email">Email address</label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={e => setFormData({...formData, email: e.target.value})}
+                    className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl px-5 py-4 text-[var(--color-primary)] font-['Outfit'] text-[1rem] placeholder-[rgba(255,255,255,0.2)] outline-none focus:border-[var(--color-highlight)] focus:bg-[rgba(100,255,218,0.03)] transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block font-['Outfit'] text-[var(--color-primary)] text-[0.95rem] mb-2" htmlFor="contact-message">Tell me about your project</label>
+                  <textarea
+                    id="contact-message"
+                    required
+                    rows={5}
+                    placeholder="I have a project idea..."
+                    value={formData.message}
+                    onChange={e => setFormData({...formData, message: e.target.value})}
+                    className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl px-5 py-4 text-[var(--color-primary)] font-['Outfit'] text-[1rem] placeholder-[rgba(255,255,255,0.2)] outline-none focus:border-[var(--color-highlight)] focus:bg-[rgba(100,255,218,0.03)] transition-all resize-none"
+                  />
+                </div>
+                {formStatus === 'error' && (
+                  <p className="text-red-400 font-['Outfit'] text-[0.9rem]">Something went wrong. Please try again or email directly.</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={formStatus === 'loading'}
+                  className="w-full py-4 px-8 rounded-xl font-['Outfit'] font-semibold text-[1.05rem] text-[#0a0a0a] flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(100,255,218,0.25)] disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{ background: "linear-gradient(90deg, #c8f04a 0%, #64ffda 100%)" }}
+                >
+                  {formStatus === 'loading' ? (
+                    <><i className="fas fa-spinner fa-spin"></i> Sending...</>
+                  ) : (
+                    <><span>Send message</span><i className="fas fa-paper-plane"></i></>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
