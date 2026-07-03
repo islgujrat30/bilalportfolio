@@ -35,7 +35,6 @@ const SectionHeading = ({ children }) => (
 function App() {
   const [isNavActive, setIsNavActive] = useState(false);
   const [typingText, setTypingText] = useState("");
-  const [modalImage, setModalImage] = useState(null);
   const headingRefs = useRef([]);
 
   const toggleNav = () => setIsNavActive(!isNavActive);
@@ -119,19 +118,6 @@ function App() {
       description: "A personal portfolio to showcase my skills and projects. Designed to be clean, modern, and fully responsive across all devices.",
       imageUrl: "3.jfif",
       githubUrl: "https://github.com/islgujrat30/bilalportfolio",
-    }
-  ];
-
-  const galleryItems = [
-    {
-      title: "Website Development Certification",
-      description: "Successfully completed professional web development training at the ITS Training Centre, certified on May 30, 2024.",
-      imageUrl: "certificate_web_dev.jpg"
-    },
-    {
-      title: "Google AI Professional Certificate",
-      description: "Earned the Google AI Professional Certificate via Coursera (June 1, 2026). Completed 7 courses covering AI fundamentals, brainstorming, research, writing, content creation, data analysis, and app building.",
-      imageUrl: "certificate_google_ai.png"
     }
   ];
 
@@ -247,20 +233,56 @@ function App() {
 
       <TechStack addToRefs={addToRefs} />
 
-      {/* Certificates Section */}
-      <section id="certificates" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto">
+      {/* Education & Certifications Section */}
+      <section id="education" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto">
         <div ref={addToRefs} className="opacity-0 translate-y-10 transition-all duration-700">
-          <SectionHeading>Certificates & Achievements</SectionHeading>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {galleryItems.map((item, idx) => (
-              <div key={idx} className="glass-card rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 group" onClick={() => setModalImage(item.imageUrl)}>
-                <img src={item.imageUrl} alt={item.title} className="w-full aspect-video object-cover border-b border-[rgba(255,255,255,0.1)] transition-transform duration-500 group-hover:scale-105" />
-                <div className="p-[1.75rem]">
-                  <h3 className="font-['Outfit'] text-[var(--color-primary)] text-[1.25rem] mb-2">{item.title}</h3>
-                  <p className="text-[var(--color-muted)] text-[0.95rem] leading-[1.5]">{item.description}</p>
+          <div className="mb-12">
+            <p className="text-[var(--color-highlight)] font-['Fira_Code'] text-[0.85rem] tracking-widest uppercase mb-3">Academic Background</p>
+            <h2 className="font-['Outfit'] text-[2.5rem] md:text-[3rem] font-bold text-[var(--color-primary)] leading-[1.2]">Education & Certifications</h2>
+          </div>
+
+          <div className="space-y-6">
+            {/* Education Card */}
+            <div className="glass-card p-[2rem] md:p-[2.5rem] rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(10,15,30,0.6)]">
+              <i className="fas fa-graduation-cap text-[1.8rem] text-[var(--color-highlight)] mb-6 drop-shadow-[0_0_10px_var(--color-glow)]"></i>
+              <h3 className="font-['Outfit'] text-[1.6rem] font-semibold text-[var(--color-primary)] mb-1">BS Information Technology</h3>
+              <p className="text-[var(--color-muted)] text-[1rem] mb-2">University of Gujrat</p>
+              <p className="text-[var(--color-highlight)] font-['Fira_Code'] text-[0.85rem] uppercase tracking-wider mb-6">Sep 2021 — June 2025</p>
+              <p className="text-[var(--color-muted)] text-[1rem] leading-[1.6] mb-6">Graduated with a CGPA of 3.12. Strong focus on the principal of Professional Practices, ML, Development and AI.</p>
+              <div className="flex flex-wrap gap-3">
+                {["Professional Practices", "Machine Learning", "Development", "Artificial Intelligence"].map((item, i) => (
+                  <span key={i} className="font-['Outfit'] text-[0.85rem] text-[var(--color-primary)] px-4 py-1.5 rounded-full bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.1)]">{item}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications Card */}
+            <div className="glass-card p-[2rem] md:p-[2.5rem] rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(10,15,30,0.6)]">
+              <i className="fas fa-award text-[1.8rem] text-[var(--color-highlight)] mb-6 drop-shadow-[0_0_10px_var(--color-glow)]"></i>
+              <h3 className="font-['Outfit'] text-[1.4rem] font-semibold text-[var(--color-primary)] mb-6">Certifications</h3>
+              
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
+                  <div>
+                    <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)]">Google AI Professional Certificate</h4>
+                    <p className="text-[var(--color-muted)] text-[0.95rem]">Coursera</p>
+                  </div>
+                  <div className="text-[var(--color-highlight)] font-['Outfit'] font-medium text-[0.95rem] mt-2 md:mt-0">
+                    June 2026
+                  </div>
+                </div>
+                
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] transition-colors hover:bg-[rgba(255,255,255,0.04)]">
+                  <div>
+                    <h4 className="font-['Outfit'] text-[1.1rem] font-medium text-[var(--color-primary)]">Website Development Certification</h4>
+                    <p className="text-[var(--color-muted)] text-[0.95rem]">ITS Training Centre</p>
+                  </div>
+                  <div className="text-[var(--color-highlight)] font-['Outfit'] font-medium text-[0.95rem] mt-2 md:mt-0">
+                    May 2024
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -318,14 +340,6 @@ function App() {
         </div>
         <p>Designed & Built by Muhammad Bilal</p>
       </footer>
-
-      {/* Modal */}
-      {modalImage && (
-        <div className="fixed inset-0 z-[2000] pt-[5rem] bg-[rgba(3,7,18,0.9)] backdrop-blur-[8px] flex flex-col items-center justify-center overflow-auto" onClick={() => setModalImage(null)}>
-          <span className="absolute top-[2rem] right-[2rem] md:right-[3rem] text-[var(--color-primary)] text-[2.5rem] md:text-[3rem] font-light cursor-pointer hover:text-[var(--color-highlight)] transition-colors">&times;</span>
-          <img src={modalImage} className="w-[95%] md:w-[90%] max-w-[800px] max-h-[75vh] object-contain rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-[rgba(255,255,255,0.08)] animate-[zoom_0.3s]" onClick={(e) => e.stopPropagation()} />
-        </div>
-      )}
     </div>
   );
 }
