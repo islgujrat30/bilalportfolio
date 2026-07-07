@@ -173,9 +173,9 @@ function App() {
       <main id="main" className="relative pt-[10rem] pb-[4rem] px-[2rem] lg:px-[8rem] w-full min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-[-1] bg-[#060b19]">
-          <div className="absolute top-0 right-0 w-full lg:w-[65%] h-full opacity-60 lg:opacity-100">
-            <img src="hero-bg.jpg" alt="Muhammad Bilal Background" className="w-full h-full object-cover object-center" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#060b19] via-[#060b19]/80 to-[#060b19]/40 lg:via-transparent lg:to-transparent"></div>
+          <div className="absolute inset-0 w-full h-full opacity-60 lg:opacity-90">
+            <img src="hero-bg.jpg" alt="Muhammad Bilal Background" className="w-full h-full object-cover object-[80%_center] lg:object-[right_center]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#060b19] via-[#060b19]/80 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#060b19] via-transparent to-transparent"></div>
           </div>
         </div>
