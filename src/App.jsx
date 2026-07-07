@@ -170,23 +170,27 @@ function App() {
       </header>
 
       {/* Main Hero */}
-      <main id="main" className="pt-[10rem] pb-[4rem] px-[2rem] lg:px-[4rem] max-w-[1100px] mx-auto min-h-screen flex flex-col justify-center">
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16 text-center lg:text-left">
-          <div className="flex-1.2">
+      <main id="main" className="relative pt-[10rem] pb-[4rem] px-[2rem] lg:px-[8rem] w-full min-h-screen flex flex-col justify-center overflow-hidden">
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-[-1]">
+          <img src="hero-bg.jpg" alt="Muhammad Bilal Background" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#060b19] via-[rgba(6,11,25,0.85)] to-[rgba(6,11,25,0.4)]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060b19] via-transparent to-transparent"></div>
+        </div>
+
+        <div className="max-w-[1100px] w-full z-10 mx-auto">
+          <div className="max-w-[750px] text-center lg:text-left mx-auto lg:mx-0">
             <h1 ref={addToRefs} className="font-['Outfit'] text-[clamp(32px,7vw,75px)] font-extrabold text-[var(--color-primary)] leading-[1.1] mb-2 opacity-0 translate-y-10 transition-all duration-700">Muhammad Bilal.</h1>
             <h2 ref={addToRefs} className="font-['Outfit'] text-[clamp(20px,4.5vw,45px)] text-[var(--color-muted)] font-semibold mb-5 opacity-0 translate-y-10 transition-all duration-700 delay-100">
-              I turn real-world problems into <span className="text-[var(--color-highlight)] border-r-2 border-[var(--color-highlight)] pr-1 animate-blink">{typingText}</span>
+              I turn real-world problems into <br className="hidden lg:block" />
+              <span className="text-[var(--color-highlight)] border-r-2 border-[var(--color-highlight)] pr-1 animate-blink">{typingText}</span>
             </h2>
-            <p className="text-[1.1rem] lg:text-[1.15rem] text-[var(--color-muted)] max-w-[580px] leading-[1.7] mb-10 mx-auto lg:mx-0">
+            <p className="text-[1.1rem] lg:text-[1.15rem] text-[var(--color-muted)] leading-[1.7] mb-10 mx-auto lg:mx-0">
               I’m an IT professional focused on building SaaS products for students and businesses. I create practical, user-friendly digital solutions that solve real-world problems and can scale into reliable systems.
             </p>
             <a href="#work" className="inline-block bg-transparent text-[var(--color-highlight)] font-['Outfit'] font-semibold border border-[var(--color-highlight)] py-[1.1rem] px-[2.2rem] rounded-md hover:bg-[rgba(100,255,218,0.08)] hover:-translate-y-1 shadow-[0_4px_20px_rgba(100,255,218,0.05)] hover:shadow-[0_8px_30px_var(--color-glow)] transition-all duration-300">
               Check out my work!
             </a>
-          </div>
-          <div className="flex-0.8 relative max-w-[240px] lg:max-w-[320px] aspect-square rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] group">
-            <div className="absolute inset-0 border-2 border-[var(--color-highlight)] rounded-xl pointer-events-none transition-transform duration-300 group-hover:scale-95 z-10"></div>
-            <img src="bilal.jpg" alt="Muhammad Bilal" className="w-full h-full object-cover grayscale-[10%] contrast-[105%] transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105" />
           </div>
         </div>
       </main>
