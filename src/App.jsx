@@ -172,14 +172,16 @@ function App() {
       {/* Main Hero */}
       <main id="main" className="relative pt-[10rem] pb-[4rem] px-[2rem] lg:px-[8rem] w-full min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Background Image & Overlay */}
-        <div className="absolute inset-0 z-[-1]">
-          <img src="hero-bg.jpg" alt="Muhammad Bilal Background" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#060b19] via-[rgba(6,11,25,0.85)] to-[rgba(6,11,25,0.4)]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060b19] via-transparent to-transparent"></div>
+        <div className="absolute inset-0 z-[-1] bg-[#060b19]">
+          <div className="absolute top-0 right-0 w-full lg:w-[65%] h-full opacity-60 lg:opacity-100">
+            <img src="hero-bg.jpg" alt="Muhammad Bilal Background" className="w-full h-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#060b19] via-[#060b19]/80 to-[#060b19]/40 lg:via-transparent lg:to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#060b19] via-transparent to-transparent"></div>
+          </div>
         </div>
 
         <div className="max-w-[1100px] w-full z-10 mx-auto">
-          <div className="max-w-[750px] text-center lg:text-left mx-auto lg:mx-0">
+          <div className="max-w-[700px] text-center lg:text-left mx-auto lg:mx-0">
             <h1 ref={addToRefs} className="font-['Outfit'] text-[clamp(32px,7vw,75px)] font-extrabold text-[var(--color-primary)] leading-[1.1] mb-2 opacity-0 translate-y-10 transition-all duration-700">Muhammad Bilal.</h1>
             <h2 ref={addToRefs} className="font-['Outfit'] text-[clamp(20px,4.5vw,45px)] text-[var(--color-muted)] font-semibold mb-5 opacity-0 translate-y-10 transition-all duration-700 delay-100">
               I turn real-world problems into <br className="hidden lg:block" />
