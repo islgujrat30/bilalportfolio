@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import TechStack from './TechStack';
 import Chatbot from './Chatbot';
+import AIDigestSubscribe from './AIDigestSubscribe';
 
 const useIntersectionObserver = (options) => {
   const [elements, setElements] = useState([]);
@@ -339,6 +340,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <AIDigestSubscribe addToRefs={addToRefs} />
 
       {/* Projects Section */}
       <section id="work" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto">
