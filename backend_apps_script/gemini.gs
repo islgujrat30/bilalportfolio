@@ -46,6 +46,7 @@ Instructions:
 - For AI Tools, Research, and Free Resources, you MUST include actual, useful links.
 - Format the output strictly in clean HTML that can be directly embedded into an email template. 
 - Use <h2> for the 10 main categories. Use <h3>, <p>, <ul>, <li>, <strong>, and <a> tags for the content inside.
+- CRITICAL: DO NOT output <!DOCTYPE html>, <html>, <head>, or <body> tags. ONLY output the inner HTML content.
 - Do NOT wrap the output in markdown code blocks like \`\`\`html. Just return the raw HTML string.`;
 
   var payload = {
@@ -81,8 +82,22 @@ Instructions:
       if (json.candidates && json.candidates.length > 0) {
         var generatedText = json.candidates[0].content.parts[0].text;
         
-        // Clean up markdown code block artifacts if Gemini still includes them
-        generatedText = generatedText.replace(/^```html\n?/, '').replace(/\n?```$/, '').trim();
+        // Let's log the RAW generated text to see if Gemini actually gave us content
+        Logger.log("RAW GEMINI OUTPUT:");
+        Logger.log(generatedText);
+        logToSheet("INFO", "Gemini generated text length: " + generatedText.length + " characters.");
+        
+        // Sometimes Gemini puts markdown anywhere in the text
+        // Let's do a more robust extraction if there is an HTML block
+        var htmlMatch = generatedText.match(/```html([\s\S]*?)```/i);
+        if (htmlMatch) {
+          generatedText = htmlMatch[1];
+        } else {
+          // Fallback: just strip the start/end if it exists
+          generatedText = generatedText.replace(/^[\s\S]*?```html\n?/i, '').replace(/\n?```[\s\S]*?$/i, '').trim();
+        }
+        
+        logToSheet("INFO", "Cleaned text length: " + generatedText.length + " characters.");
         
         return generatedText;
       } else {
