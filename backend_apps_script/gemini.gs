@@ -29,23 +29,24 @@ function generateNewsletterWithGemini(rawNewsText) {
 Your goal is to summarize the provided raw news items and AUGMENT them with your own knowledge of current AI trends to create a highly engaging, comprehensive email newsletter.
 Tone: Enthusiastic, professional, yet accessible.
 
-IMPORTANT: You must structure the newsletter EXACTLY with the following <h2> sections (use emojis for each heading):
-1. 📰 Headlines (Top 2-3 major AI news of the week)
-2. 🧠 AI Models (Updates on new models like Gemini, GPT, Claude, open-weight models, etc.)
-3. 🛠️ AI Tools (Share 2-3 genuinely useful AI tools that readers can use today. INCLUDE WORKING LINKS)
-4. 🔬 Research (Highlight 1-2 important AI research papers or breakthroughs. INCLUDE LINKS)
-5. 💻 Developer Updates (News relevant to programmers, APIs, SDKs, or frameworks)
-6. 🚀 Startups (Funding news, new AI companies, or acquisitions)
-7. 💼 Business (How AI is impacting enterprise, economy, or tech giants)
-8. 🌐 Open Source (Updates from the open-source AI community, HuggingFace, GitHub projects)
-9. ✨ Prompt of the Week (Share one highly effective, practical AI prompt the user can try)
-10. 🎁 Free Resources (Find and share free AI courses, datasets, ebooks, or free-tier tools. INCLUDE LINKS)
+IMPORTANT: You must structure the newsletter EXACTLY with the following <h2> sections IN THIS EXACT ORDER. Do NOT use emojis anywhere in the text or headings (to avoid encoding issues):
+1. Headlines (MUST have at least 3 major AI news of the week)
+2. Prompt of the Week (Share one highly effective, practical AI prompt)
+3. Free AI Courses (Find and share courses offered by AI companies free of cost. INCLUDE LINKS)
+4. AI Models (Updates on new models like Gemini, GPT, Claude, open-weight models, etc.)
+5. AI Tools (Share 2-3 genuinely useful AI tools that readers can use today. INCLUDE LINKS)
+6. Research (Highlight 1-2 important AI research papers or breakthroughs. INCLUDE LINKS)
+7. Developer Updates (News relevant to programmers, APIs, SDKs, or frameworks)
+8. Startups (Funding news, new AI companies, or acquisitions)
+9. Business (How AI is impacting enterprise, economy, or tech giants)
+10. Open Source (Updates from the open-source AI community)
+11. Free Resources (Other datasets, ebooks, or free-tier tools. INCLUDE LINKS)
 
-Instructions:
+Formatting Instructions:
+- After EVERY section, you MUST insert a divider line using exactly this HTML: <hr class="divider">
+- For ANY link where the user should click to read more or access a resource, format it as a button using this HTML: <a href="THE_URL" class="read-more-btn">Read More</a> (or use an appropriate text like "Take Course" or "Try Tool" inside the button).
 - If the raw news data doesn't cover a specific section, use your internal knowledge (up to your knowledge cutoff) to provide relevant, high-quality content for that section.
-- For AI Tools, Research, and Free Resources, you MUST include actual, useful links.
-- Format the output strictly in clean HTML that can be directly embedded into an email template. 
-- Use <h2> for the 10 main categories. Use <h3>, <p>, <ul>, <li>, <strong>, and <a> tags for the content inside.
+- Use <h2> for the main categories. Use <h3>, <p>, <ul>, <li>, and <strong> for the content inside.
 - CRITICAL: DO NOT output <!DOCTYPE html>, <html>, <head>, or <body> tags. ONLY output the inner HTML content.
 - Do NOT wrap the output in markdown code blocks like \`\`\`html. Just return the raw HTML string.`;
 

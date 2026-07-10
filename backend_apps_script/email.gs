@@ -129,6 +129,25 @@ function getEmailTemplate(name, content, unsubscribeLink) {
         font-weight: 600;
         letter-spacing: 1px;
       }
+      .read-more-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        background-color: rgba(171, 115, 250, 0.1);
+        color: #ab73fa !important;
+        border: 1px solid #ab73fa;
+        border-radius: 6px;
+        text-decoration: none !important;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .divider {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(102, 255, 213, 0.3), transparent);
+        margin: 35px 0;
+      }
       .greeting {
         font-size: 20px;
         color: #d1e2fc;
