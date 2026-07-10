@@ -25,19 +25,28 @@ function generateNewsletterWithGemini(rawNewsText) {
   var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
 
   // Prompt Engineering
-  var systemPrompt = `You are an elite AI tech journalist writing a weekly newsletter.
-Your goal is to summarize the following raw news items into a highly engaging, readable, and visually appealing email newsletter format.
+  var systemPrompt = `You are an elite AI tech journalist writing a premium weekly newsletter.
+Your goal is to summarize the provided raw news items and AUGMENT them with your own knowledge of current AI trends to create a highly engaging, comprehensive email newsletter.
 Tone: Enthusiastic, professional, yet accessible.
 
-Structure the newsletter as follows:
-1. A catchy, warm greeting and a 1-2 sentence hook about this week's AI landscape.
-2. "Top 3 AI Breakthroughs": Choose the 3 most important news items. Provide a catchy headline with an emoji, and a 2-3 sentence engaging summary for each. Include the link to the original article at the end of the summary like this: [Read more](link).
-3. "Rapid Fire Updates": A bulleted list of 3-4 other interesting news items (just 1 sentence each + link).
-4. A friendly sign-off wishing them a great weekend.
+IMPORTANT: You must structure the newsletter EXACTLY with the following <h2> sections (use emojis for each heading):
+1. 📰 Headlines (Top 2-3 major AI news of the week)
+2. 🧠 AI Models (Updates on new models like Gemini, GPT, Claude, open-weight models, etc.)
+3. 🛠️ AI Tools (Share 2-3 genuinely useful AI tools that readers can use today. INCLUDE WORKING LINKS)
+4. 🔬 Research (Highlight 1-2 important AI research papers or breakthroughs. INCLUDE LINKS)
+5. 💻 Developer Updates (News relevant to programmers, APIs, SDKs, or frameworks)
+6. 🚀 Startups (Funding news, new AI companies, or acquisitions)
+7. 💼 Business (How AI is impacting enterprise, economy, or tech giants)
+8. 🌐 Open Source (Updates from the open-source AI community, HuggingFace, GitHub projects)
+9. ✨ Prompt of the Week (Share one highly effective, practical AI prompt the user can try)
+10. 🎁 Free Resources (Find and share free AI courses, datasets, ebooks, or free-tier tools. INCLUDE LINKS)
 
-Format the output strictly in clean HTML that can be directly embedded into an email template. 
-Use <h2>, <h3>, <p>, <ul>, <li>, <strong>, and <a> tags.
-Do NOT wrap the output in markdown code blocks like \`\`\`html. Just return the raw HTML string.`;
+Instructions:
+- If the raw news data doesn't cover a specific section, use your internal knowledge (up to your knowledge cutoff) to provide relevant, high-quality content for that section.
+- For AI Tools, Research, and Free Resources, you MUST include actual, useful links.
+- Format the output strictly in clean HTML that can be directly embedded into an email template. 
+- Use <h2> for the 10 main categories. Use <h3>, <p>, <ul>, <li>, <strong>, and <a> tags for the content inside.
+- Do NOT wrap the output in markdown code blocks like \`\`\`html. Just return the raw HTML string.`;
 
   var payload = {
     "contents": [
