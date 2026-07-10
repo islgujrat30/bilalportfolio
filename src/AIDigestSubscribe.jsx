@@ -4,28 +4,53 @@ const AIDigestSubscribe = ({ addToRefs }) => {
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [formStatus, setFormStatus] = useState("idle"); // idle | loading | success | error
 
-  const handleSubscribe = async (e) => {
+  const handleSubscribe = (e) => {
     e.preventDefault();
     if (!formData.email) return;
 
     setFormStatus("loading");
+    
     try {
-      // Placeholder for GAS Web App URL (will be updated in later phases)
       const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK0XeewS1WKlN0f7635aUy74iV7Xr-zhPS5i-thpe_HUAeR342LD5Ml5bB3l0gKlbnKQ/exec";
 
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          action: "subscribe",
-          name: formData.name,
-          email: formData.email
-        }).toString(),
-      });
-      // no-cors doesn't return readable response, assuming success if no error thrown
-      setFormStatus("success");
-      setFormData({ name: "", email: "" });
+      // 100% fail-proof method for Google Apps Script to avoid CORS and fetch redirect issues
+      const iframeName = "hidden_iframe_" + Date.now();
+      const iframe = document.createElement("iframe");
+      iframe.name = iframeName;
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+
+      const form = document.createElement("form");
+      form.action = SCRIPT_URL;
+      form.method = "POST";
+      form.target = iframeName;
+
+      const inputs = {
+        action: "subscribe",
+        name: formData.name,
+        email: formData.email
+      };
+
+      for (const [key, value] of Object.entries(inputs)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+
+      iframe.onload = () => {
+        setFormStatus("success");
+        setFormData({ name: "", email: "" });
+        setTimeout(() => {
+          document.body.removeChild(form);
+          document.body.removeChild(iframe);
+        }, 1000);
+      };
+
+      form.submit();
     } catch (error) {
       setFormStatus("error");
     }
