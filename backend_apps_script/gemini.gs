@@ -73,44 +73,63 @@ Formatting Instructions:
     "muteHttpExceptions": true
   };
 
-  try {
-    var response = UrlFetchApp.fetch(url, options);
-    var responseCode = response.getResponseCode();
-    var responseText = response.getContentText();
-    
-    if (responseCode === 200) {
-      var json = JSON.parse(responseText);
-      if (json.candidates && json.candidates.length > 0) {
-        var generatedText = json.candidates[0].content.parts[0].text;
-        
-        // Let's log the RAW generated text to see if Gemini actually gave us content
-        Logger.log("RAW GEMINI OUTPUT:");
-        Logger.log(generatedText);
-        logToSheet("INFO", "Gemini generated text length: " + generatedText.length + " characters.");
-        
-        // Sometimes Gemini puts markdown anywhere in the text
-        // Let's do a more robust extraction if there is an HTML block
-        var htmlMatch = generatedText.match(/```html([\s\S]*?)```/i);
-        if (htmlMatch) {
-          generatedText = htmlMatch[1];
+  var maxRetries = 3;
+  var retryDelay = 2000; // start with 2 seconds
+
+  for (var attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      var response = UrlFetchApp.fetch(url, options);
+      var responseCode = response.getResponseCode();
+      var responseText = response.getContentText();
+      
+      if (responseCode === 200) {
+        var json = JSON.parse(responseText);
+        if (json.candidates && json.candidates.length > 0) {
+          var generatedText = json.candidates[0].content.parts[0].text;
+          
+          // Let's log the RAW generated text to see if Gemini actually gave us content
+          Logger.log("RAW GEMINI OUTPUT:");
+          Logger.log(generatedText);
+          logToSheet("INFO", "Gemini generated text length: " + generatedText.length + " characters.");
+          
+          // Sometimes Gemini puts markdown anywhere in the text
+          // Let's do a more robust extraction if there is an HTML block
+          var htmlMatch = generatedText.match(/```html([\s\S]*?)```/i);
+          if (htmlMatch) {
+            generatedText = htmlMatch[1];
+          } else {
+            // Fallback: just strip the start/end if it exists
+            generatedText = generatedText.replace(/^[\s\S]*?```html\n?/i, '').replace(/\n?```[\s\S]*?$/i, '').trim();
+          }
+          
+          logToSheet("INFO", "Cleaned text length: " + generatedText.length + " characters.");
+          
+          return generatedText;
         } else {
-          // Fallback: just strip the start/end if it exists
-          generatedText = generatedText.replace(/^[\s\S]*?```html\n?/i, '').replace(/\n?```[\s\S]*?$/i, '').trim();
+          throw new Error("No candidates returned from Gemini.");
         }
-        
-        logToSheet("INFO", "Cleaned text length: " + generatedText.length + " characters.");
-        
-        return generatedText;
+      } else if (responseCode === 503 && attempt < maxRetries) {
+        logToSheet("WARNING", "Gemini API 503 High Demand error. Retrying in " + (retryDelay/1000) + " seconds... (Attempt " + attempt + " of " + maxRetries + ")");
+        Utilities.sleep(retryDelay);
+        retryDelay *= 2; // Exponential backoff (2s, 4s, 8s...)
       } else {
-        throw new Error("No candidates returned from Gemini.");
+        logToSheet("ERROR", "Gemini API failed. Status: " + responseCode + " Response: " + responseText);
+        throw new Error("Gemini API request failed.");
       }
-    } else {
-      logToSheet("ERROR", "Gemini API failed. Status: " + responseCode + " Response: " + responseText);
-      throw new Error("Gemini API request failed.");
+    } catch (e) {
+      if (attempt === maxRetries) {
+        logToSheet("ERROR", "Error communicating with Gemini after " + maxRetries + " attempts: " + e.message);
+        throw e;
+      } else if (e.message.includes("503") || e.message.includes("timeout")) {
+        // Handle fetch level exceptions (if not using muteHttpExceptions)
+        logToSheet("WARNING", "Network/Timeout error. Retrying... (Attempt " + attempt + ")");
+        Utilities.sleep(retryDelay);
+        retryDelay *= 2;
+      } else {
+        logToSheet("ERROR", "Fatal Error communicating with Gemini: " + e.message);
+        throw e;
+      }
     }
-  } catch (e) {
-    logToSheet("ERROR", "Error communicating with Gemini: " + e.message);
-    throw e;
   }
 }
 
