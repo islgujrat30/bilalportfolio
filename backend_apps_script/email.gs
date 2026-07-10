@@ -44,100 +44,137 @@ function getEmailTemplate(name, content, unsubscribeLink) {
       body {
         margin: 0;
         padding: 0;
-        background-color: #060b19; /* Matches portfolio background */
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #ccd6f6;
+        background-color: #05080f;
+        font-family: 'Outfit', 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #d1e2fc;
       }
       .container {
         max-width: 600px;
         margin: 0 auto;
-        background-color: #112240;
-        border-radius: 8px;
+        background-color: #0a0d16;
+        border-radius: 16px;
+        border: 1px solid rgba(102, 255, 213, 0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         overflow: hidden;
       }
       .header {
-        background-color: #060b19;
-        padding: 30px 20px;
+        background: linear-gradient(135deg, #05080f 0%, #0a0d16 100%);
+        padding: 40px 20px;
         text-align: center;
-        border-bottom: 2px solid #64ffda;
+        border-bottom: 2px solid #66ffd5;
       }
       .header h1 {
-        color: #c8f04a;
+        color: #d1e2fc;
         margin: 0;
-        font-size: 24px;
-        letter-spacing: 1px;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .header .highlight {
+        color: #66ffd5;
       }
       .content {
-        padding: 30px;
-        line-height: 1.6;
+        padding: 40px;
+        line-height: 1.8;
         font-size: 16px;
+        color: #9aa3ba;
       }
       .content h2 {
-        color: #64ffda;
-        font-size: 20px;
-        margin-top: 30px;
+        color: #ab73fa;
+        font-size: 22px;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        font-weight: 600;
       }
       .content h3 {
-        color: #e6f1ff;
+        color: #d1e2fc;
         font-size: 18px;
+        margin-top: 25px;
+      }
+      .content p {
+        margin-bottom: 16px;
       }
       .content a {
-        color: #64ffda;
+        color: #66ffd5;
         text-decoration: none;
+        border-bottom: 1px dashed #66ffd5;
+        transition: all 0.3s ease;
       }
       .content a:hover {
-        text-decoration: underline;
+        color: #ab73fa;
+        border-bottom-color: #ab73fa;
       }
       .footer {
-        background-color: #060b19;
-        padding: 20px;
+        background-color: #05080f;
+        padding: 30px;
         text-align: center;
-        font-size: 12px;
-        color: #8892b0;
+        font-size: 13px;
+        color: #9aa3ba;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
       }
       .footer a {
-        color: #8892b0;
-        text-decoration: underline;
+        color: #66ffd5;
+        text-decoration: none;
       }
       .btn {
         display: inline-block;
-        padding: 10px 20px;
-        margin-top: 20px;
-        background-color: transparent;
-        color: #64ffda;
-        border: 1px solid #64ffda;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: bold;
+        padding: 12px 24px;
+        margin-top: 25px;
+        background-color: rgba(102, 255, 213, 0.1);
+        color: #66ffd5 !important;
+        border: 1px solid #66ffd5;
+        border-radius: 8px;
+        text-decoration: none !important;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .greeting {
+        font-size: 20px;
+        color: #d1e2fc;
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+      .signoff {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .signoff strong {
+        color: #d1e2fc;
+        font-size: 18px;
       }
     </style>
   </head>
   <body>
-    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #060b19; padding: 20px 0;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #05080f; padding: 40px 0;">
       <tr>
         <td align="center">
           <div class="container">
             <!-- Header -->
             <div class="header">
-              <h1>AI WEEKLY DIGEST 🤖</h1>
+              <h1>AI WEEKLY <span class="highlight">DIGEST</span></h1>
             </div>
             
             <!-- Body Content -->
             <div class="content">
-              <p>Hi ${name},</p>
+              <div class="greeting">Hi ${name},</div>
               
               <!-- Gemini Content Injected Here -->
               ${content}
               
-              <br><br>
-              <p>Stay curious,</p>
-              <p><strong>Muhammad Bilal</strong></p>
+              <div class="signoff">
+                <p>Stay curious & ahead of the curve,</p>
+                <p><strong>Muhammad Bilal</strong></p>
+              </div>
             </div>
             
             <!-- Footer -->
             <div class="footer">
-              <p>You are receiving this because you subscribed on my portfolio.</p>
-              <p><a href="${unsubscribeLink}">Unsubscribe here</a> if you no longer wish to receive these emails.</p>
+              <p>You are receiving this premium digest because you subscribed via my portfolio.</p>
+              <p style="margin-top: 15px;">
+                <a href="${unsubscribeLink}">Unsubscribe securely</a>
+              </p>
             </div>
           </div>
         </td>
