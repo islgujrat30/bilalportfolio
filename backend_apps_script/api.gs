@@ -33,8 +33,8 @@ function doPost(e) {
     }
     
   } catch (globalError) {
-    // Log the error securely (Phase 4 will implement actual logging to Sheets)
-    // logError("doPost", globalError.message);
+    // Log the error securely
+    logToSheet("ERROR", "doPost Error: " + globalError.message);
     return createJsonResponse({ status: "error", message: "Internal Server Error" }, 500);
   }
 }
@@ -56,18 +56,28 @@ function handleSubscribe(payload) {
   email = email.toLowerCase().trim();
   name = name.trim();
 
-  // Phase 4 Placeholder:
-  // Here we will check if the email exists in Google Sheets.
-  // If it does, return an error or reactivate the subscription.
-  // If not, generate a token, append a new row, and return success.
+  // 3. Database Check
+  var existingUser = getSubscriber(email);
   
-  // For Phase 3, we mock a successful response.
+  if (existingUser) {
+    if (existingUser.status === "Active") {
+      return createJsonResponse({ status: "success", message: "You are already subscribed!" });
+    } else {
+      // Reactivate
+      updateSubscriberStatus(existingUser.row, "Active");
+      logToSheet("INFO", "Subscriber reactivated: " + email);
+      return createJsonResponse({ status: "success", message: "Subscription reactivated successfully!" });
+    }
+  }
+
+  // 4. New Subscription
   var token = generateUniqueToken();
+  addSubscriber(name, email, token);
+  logToSheet("INFO", "New subscriber added: " + email);
 
   return createJsonResponse({
     status: "success",
-    message: "Successfully subscribed to AI Weekly Digest.",
-    mock_token: token // Removed in production, just to show token gen works
+    message: "Successfully subscribed to AI Weekly Digest."
   });
 }
 
