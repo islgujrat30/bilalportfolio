@@ -11,12 +11,12 @@ const AIDigestSubscribe = ({ addToRefs }) => {
     setFormStatus("loading");
     try {
       // Placeholder for GAS Web App URL (will be updated in later phases)
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_PLACEHOLDER/exec";
-      
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK0XeewS1WKlN0f7635aUy74iV7Xr-zhPS5i-thpe_HUAeR342LD5Ml5bB3l0gKlbnKQ/exec";
+
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           action: "subscribe",
           name: formData.name,
@@ -34,11 +34,11 @@ const AIDigestSubscribe = ({ addToRefs }) => {
   return (
     <section id="ai-digest" className="py-[4rem] lg:py-[6rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto">
       <div ref={addToRefs} className="opacity-0 translate-y-10 transition-all duration-700">
-        
+
         <div className="glass-card p-[2rem] md:p-[3.5rem] rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(10,15,30,0.6)] relative overflow-hidden">
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--color-highlight)] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
-          
+
           <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
             <div className="flex-1 text-center md:text-left">
               <p className="text-[var(--color-highlight)] font-['Fira_Code'] text-[0.85rem] tracking-widest uppercase mb-3"><i className="fas fa-robot mr-2"></i>Weekly Automation</p>
@@ -46,7 +46,7 @@ const AIDigestSubscribe = ({ addToRefs }) => {
               <p className="text-[var(--color-muted)] text-[1.05rem] leading-[1.7] mb-6">
                 Stay ahead of the curve. Get a beautifully curated, AI-generated summary of the week's top Artificial Intelligence news, models, and tools delivered straight to your inbox every Friday.
               </p>
-              
+
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-5 mb-6">
                 <div className="flex items-center gap-2">
                   <i className="fas fa-check-circle text-[var(--color-highlight)]"></i>
@@ -83,7 +83,7 @@ const AIDigestSubscribe = ({ addToRefs }) => {
                         type="text"
                         placeholder="Your name (optional)"
                         value={formData.name}
-                        onChange={e => setFormData({...formData, name: e.target.value})}
+                        onChange={e => setFormData({ ...formData, name: e.target.value })}
                         className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-lg px-4 py-3 text-[var(--color-primary)] font-['Outfit'] text-[0.95rem] placeholder-[rgba(255,255,255,0.2)] outline-none focus:border-[var(--color-highlight)] focus:bg-[rgba(100,255,218,0.03)] transition-all"
                       />
                     </div>
@@ -93,15 +93,15 @@ const AIDigestSubscribe = ({ addToRefs }) => {
                         required
                         placeholder="Email address *"
                         value={formData.email}
-                        onChange={e => setFormData({...formData, email: e.target.value})}
+                        onChange={e => setFormData({ ...formData, email: e.target.value })}
                         className="w-full bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-lg px-4 py-3 text-[var(--color-primary)] font-['Outfit'] text-[0.95rem] placeholder-[rgba(255,255,255,0.2)] outline-none focus:border-[var(--color-highlight)] focus:bg-[rgba(100,255,218,0.03)] transition-all"
                       />
                     </div>
-                    
+
                     {formStatus === 'error' && (
                       <p className="text-red-400 font-['Outfit'] text-[0.85rem] text-center">Something went wrong. Try again.</p>
                     )}
-                    
+
                     <button
                       type="submit"
                       disabled={formStatus === 'loading'}
@@ -121,10 +121,10 @@ const AIDigestSubscribe = ({ addToRefs }) => {
                 )}
               </div>
             </div>
-            
+
           </div>
         </div>
-        
+
       </div>
     </section>
   );
