@@ -16,12 +16,12 @@ const AIDigestSubscribe = ({ addToRefs }) => {
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
           action: "subscribe",
           name: formData.name,
           email: formData.email
-        }),
+        }).toString(),
       });
       // no-cors doesn't return readable response, assuming success if no error thrown
       setFormStatus("success");

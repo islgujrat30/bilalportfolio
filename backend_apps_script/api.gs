@@ -8,17 +8,21 @@
  */
 function doPost(e) {
   try {
-    // Check if post data exists
-    if (!e || !e.postData || !e.postData.contents) {
-      return createJsonResponse({ status: "error", message: "No data provided." }, 400);
-    }
-
-    // Parse incoming JSON payload
     var payload;
-    try {
-      payload = JSON.parse(e.postData.contents);
-    } catch (parseError) {
-      return createJsonResponse({ status: "error", message: "Invalid JSON payload." }, 400);
+    
+    // Check if data is URL-encoded form data (from browser fetch)
+    if (e && e.parameter && e.parameter.action) {
+      payload = e.parameter;
+    } 
+    // Otherwise try to parse JSON from postData
+    else if (e && e.postData && e.postData.contents) {
+      try {
+        payload = JSON.parse(e.postData.contents);
+      } catch (parseError) {
+        return createJsonResponse({ status: "error", message: "Invalid JSON payload." }, 400);
+      }
+    } else {
+      return createJsonResponse({ status: "error", message: "No data provided." }, 400);
     }
 
     var action = payload.action;
