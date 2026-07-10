@@ -21,8 +21,8 @@ function generateNewsletterWithGemini(rawNewsText) {
     throw new Error("Gemini API Key not found.");
   }
 
-  // We are using gemini-1.5-flash as it's fast and cost-effective for summarization tasks
-  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
+  // We are using gemini-2.5-flash as it is the current fast/cost-effective model in 2026
+  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
 
   // Prompt Engineering
   var systemPrompt = `You are an elite AI tech journalist writing a weekly newsletter.
@@ -86,5 +86,37 @@ Do NOT wrap the output in markdown code blocks like \`\`\`html. Just return the 
   } catch (e) {
     logToSheet("ERROR", "Error communicating with Gemini: " + e.message);
     throw e;
+  }
+}
+
+/**
+ * Diagnostic tool: Fetches the list of all available models for this specific API key.
+ * Run this from the Apps Script editor to see which models are actually accessible.
+ */
+function testAvailableModels() {
+  var apiKey = getGeminiApiKey();
+  if (!apiKey) {
+    Logger.log("API Key is missing!");
+    return;
+  }
+  
+  var url = "https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey;
+  try {
+    var response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    var json = JSON.parse(response.getContentText());
+    
+    if (json.models) {
+      Logger.log("SUCCESS! Here are the models your API key has access to:");
+      json.models.forEach(function(m) {
+        Logger.log("- " + m.name);
+      });
+      // Also log it to the sheet so we can easily see it
+      logToSheet("INFO", "Available models: " + json.models.map(function(m) { return m.name.split('/')[1]; }).join(", "));
+    } else {
+      Logger.log("Failed to list models. Response: " + response.getContentText());
+      logToSheet("ERROR", "ListModels failed: " + response.getContentText());
+    }
+  } catch(e) {
+    Logger.log("Error: " + e.message);
   }
 }
