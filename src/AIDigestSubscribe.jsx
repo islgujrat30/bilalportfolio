@@ -72,20 +72,7 @@ const AIDigestSubscribe = ({ addToRefs }) => {
                 Stay ahead of the curve. Get a beautifully curated, AI-generated summary of the week's top Artificial Intelligence news, models, and tools delivered straight to your inbox every Friday.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-5 mb-6">
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-check-circle text-[var(--color-highlight)]"></i>
-                  <span className="font-['Outfit'] text-[0.95rem] text-[var(--color-primary)]">100% Automated</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-check-circle text-[var(--color-highlight)]"></i>
-                  <span className="font-['Outfit'] text-[0.95rem] text-[var(--color-primary)]">Powered by Gemini</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-check-circle text-[var(--color-highlight)]"></i>
-                  <span className="font-['Outfit'] text-[0.95rem] text-[var(--color-primary)]">Spam-free</span>
-                </div>
-              </div>
+
             </div>
 
             <div className="w-full md:w-[45%]">
