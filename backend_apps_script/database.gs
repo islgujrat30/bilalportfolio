@@ -111,3 +111,34 @@ function logToSheet(type, message) {
     // Fail silently if logging fails
   }
 }
+
+/**
+ * Finds a subscriber by their unique Unsubscribe Token.
+ * 
+ * @param {String} token 
+ * @returns {Object|null} The subscriber record if found, else null
+ */
+function getSubscriberByToken(token) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("Subscribers");
+  
+  if (!sheet) return null;
+  
+  var data = sheet.getDataRange().getValues();
+  
+  // Skip header (i=1)
+  for (var i = 1; i < data.length; i++) {
+    // Token is in column E (index 4)
+    if (data[i][4] && data[i][4].toString() === token) {
+      return {
+        row: i + 1,
+        timestamp: data[i][0],
+        name: data[i][1],
+        email: data[i][2],
+        status: data[i][3],
+        token: data[i][4]
+      };
+    }
+  }
+  return null;
+}

@@ -87,12 +87,129 @@ function handleSubscribe(payload) {
 
 /**
  * Handles HTTP GET requests.
- * Used primarily for health checks or testing the deployment.
+ * Used primarily for health checks, testing the deployment, and handling Email Unsubscribe clicks.
  */
 function doGet(e) {
+  // If a user clicks the unsubscribe link in their email:
+  // e.parameter will contain { action: "unsubscribe", token: "..." }
+  if (e && e.parameter && e.parameter.action === "unsubscribe" && e.parameter.token) {
+    return handleUnsubscribe(e.parameter.token);
+  }
+
+  // Default GET response (Health check)
   return createJsonResponse({
     status: "success",
     message: "AI Weekly Digest Backend is running.",
     timestamp: new Date().toISOString()
   });
+}
+
+/**
+ * Handles the 'unsubscribe' GET request when a user clicks the link in their email.
+ * It returns an HTML response (a webpage) rather than a JSON response, so the user sees a nice UI.
+ * 
+ * @param {String} token 
+ */
+function handleUnsubscribe(token) {
+  try {
+    var subscriber = getSubscriberByToken(token);
+    
+    if (subscriber) {
+      if (subscriber.status === "Active") {
+        updateSubscriberStatus(subscriber.row, "Unsubscribed");
+        logToSheet("INFO", "User unsubscribed: " + subscriber.email);
+        return getUnsubscribeHtmlPage(true, "You have successfully unsubscribed from the AI Weekly Digest. We're sad to see you go!");
+      } else {
+        return getUnsubscribeHtmlPage(false, "You are already unsubscribed from our list.");
+      }
+    } else {
+      return getUnsubscribeHtmlPage(false, "Invalid or expired unsubscribe link.");
+    }
+  } catch (error) {
+    logToSheet("ERROR", "Unsubscribe error: " + error.message);
+    return getUnsubscribeHtmlPage(false, "An error occurred while processing your request. Please try again later.");
+  }
+}
+
+/**
+ * Generates a premium UI for the unsubscribe confirmation page.
+ * 
+ * @param {Boolean} isSuccess 
+ * @param {String} message 
+ * @returns {HtmlOutput}
+ */
+function getUnsubscribeHtmlPage(isSuccess, message) {
+  var icon = isSuccess ? "✅" : "ℹ️";
+  var html = `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe - AI Weekly Digest</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #05080f;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #d1e2fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .card {
+        background-color: #0a0d16;
+        border: 1px solid rgba(102, 255, 213, 0.15);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+      .icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 0 0 15px 0;
+        color: #ab73fa;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #9aa3ba;
+        margin-bottom: 25px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(90deg, rgba(102, 255, 213, 0.1) 0%, rgba(102, 255, 213, 0.2) 100%);
+        color: #66ffd5;
+        text-decoration: none;
+        border: 1px solid #66ffd5;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .btn:hover {
+        background: rgba(102, 255, 213, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="icon">${icon}</div>
+      <h1>Unsubscribe</h1>
+      <p>${message}</p>
+      <a href="https://bilalportfolio.pages.dev" class="btn">Return to Portfolio</a>
+    </div>
+  </body>
+  </html>
+  `;
+  
+  return HtmlService.createHtmlOutput(html)
+    .setTitle('Unsubscribe - AI Weekly Digest')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
