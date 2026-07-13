@@ -10,9 +10,8 @@ function sendEmail(email, name, unsubscribeToken, newsletterContent) {
   var subject = "🚀 Your AI Weekly Digest is Here!";
   var recipientName = name ? name : "AI Enthusiast";
   
-  // Construct the Unsubscribe Link (using ScriptApp to get the current Web App URL dynamically)
-  // Note: ScriptApp.getService().getUrl() only works if deployed as a Web App
-  var webAppUrl = ScriptApp.getService().getUrl();
+  // Use the public Web App URL directly to avoid /dev private link issues when running from the editor
+  var webAppUrl = "https://script.google.com/macros/s/AKfycbyGHAfDBjSzvKiAScjPyK5AOIW0vjqooW1SNSc-59kpAqsuBy2XkOTSadgiAfsngKd6YA/exec";
   var unsubscribeLink = webAppUrl + "?action=unsubscribe&token=" + unsubscribeToken;
 
   var htmlBody = getEmailTemplate(recipientName, newsletterContent, unsubscribeLink);
