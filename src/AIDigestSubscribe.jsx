@@ -11,7 +11,7 @@ const AIDigestSubscribe = ({ addToRefs }) => {
     setFormStatus("loading");
     
     try {
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK0XeewS1WKlN0f7635aUy74iV7Xr-zhPS5i-thpe_HUAeR342LD5Ml5bB3l0gKlbnKQ/exec";
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyGHAfDBjSzvKiAScjPyK5AOIW0vjqooW1SNSc-59kpAqsuBy2XkOTSadgiAfsngKd6YA/exec";
 
       // 100% fail-proof method for Google Apps Script to avoid CORS and fetch redirect issues
       const iframeName = "hidden_iframe_" + Date.now();
