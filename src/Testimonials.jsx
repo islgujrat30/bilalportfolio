@@ -1,4 +1,8 @@
 import React from 'react';
+import women1 from '../public/women1.jpg';
+import men1 from '../public/men1.jpg';
+import women2 from '../public/women2.jpg';
+import men2 from '../public/men2.jfif';
 
 const testimonials = [
   {
@@ -9,7 +13,7 @@ const testimonials = [
     company: "NovaTech Solutions",
     country: "🇺🇸 United States",
     type: "Web Design",
-    image: "/women1.jpg"
+    image: women1
   },
   {
     rating: 5,
@@ -19,7 +23,7 @@ const testimonials = [
     company: "Oakridge Academy",
     country: "🇬🇧 United Kingdom",
     type: "AI Chatbot for School Website",
-    image: "/men1.jpg"
+    image: men1
   },
   {
     rating: 5,
@@ -29,7 +33,7 @@ const testimonials = [
     company: "Vertex Enterprises",
     country: "🇦🇪 UAE",
     type: "Business Website",
-    image: "/women2.jpg"
+    image: women2
   },
   {
     rating: 5,
@@ -39,7 +43,7 @@ const testimonials = [
     company: "Nexa Logistics",
     country: "🇨🇦 Canada",
     type: "AI Agent",
-    image: "/men2.jfif"
+    image: men2
   }
 ];
 
