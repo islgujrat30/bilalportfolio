@@ -191,9 +191,14 @@ function App() {
             <p className="text-[1.1rem] lg:text-[1.15rem] text-[var(--color-muted)] leading-[1.7] mb-10 mx-auto lg:mx-0">
               I’m an IT professional focused on building SaaS products for students and businesses. I create practical, user-friendly digital solutions that solve real-world problems and can scale into reliable systems.
             </p>
-            <a href="#work" className="inline-block bg-transparent text-[var(--color-highlight)] font-['Outfit'] font-semibold border border-[var(--color-highlight)] py-[1.1rem] px-[2.2rem] rounded-md hover:bg-[rgba(100,255,218,0.08)] hover:-translate-y-1 shadow-[0_4px_20px_rgba(100,255,218,0.05)] hover:shadow-[0_8px_30px_var(--color-glow)] transition-all duration-300">
-              Check out my work!
-            </a>
+            <div className="flex flex-col sm:flex-row gap-5 items-center justify-center lg:justify-start">
+              <a href="#work" className="py-3 px-8 rounded-xl font-['Outfit'] font-semibold text-[1.05rem] text-[#0a0a0a] inline-flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(100,255,218,0.25)] w-full sm:w-auto" style={{ background: "linear-gradient(90deg, #c8f04a 0%, #64ffda 100%)" }}>
+                <span>Check out my work!</span><i className="fas fa-arrow-right"></i>
+              </a>
+              <a href="https://calendly.com/bilalfaz666/30min" target="_blank" rel="noopener noreferrer" className="py-3 px-8 rounded-xl font-['Outfit'] font-semibold text-[1.05rem] text-[#0a0a0a] inline-flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(100,255,218,0.25)] w-full sm:w-auto" style={{ background: "linear-gradient(90deg, #c8f04a 0%, #64ffda 100%)" }}>
+                <span>📅 Book a Consultation</span>
+              </a>
+            </div>
           </div>
         </div>
       </main>
