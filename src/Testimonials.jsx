@@ -80,7 +80,7 @@ const Testimonials = () => {
           {[...testimonials, ...testimonials].map((testimonial, idx) => (
             <div 
               key={idx} 
-              className="glass-card mx-4 p-8 rounded-xl border border-[rgba(102,255,213,0.15)] flex flex-col justify-between w-[380px] h-[340px] whitespace-normal transition-all duration-300 hover:border-[var(--color-highlight)] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)]"
+              className="glass-card mx-3 sm:mx-4 p-6 sm:p-7 rounded-xl border border-[rgba(102,255,213,0.15)] flex flex-col justify-between w-[85vw] max-w-[320px] h-auto min-h-[320px] whitespace-normal transition-all duration-300 hover:border-[var(--color-highlight)] hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)] shrink-0"
             >
               <div>
                 {/* Top: Stars, Verified & Tag */}
