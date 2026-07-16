@@ -266,6 +266,30 @@ function App() {
         </div>
       </section>
 
+      {/* What I Can Build Section */}
+      <section id="what-i-build" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto">
+        <div ref={addToRefs} className="opacity-0 translate-y-10 transition-all duration-700">
+          <SectionHeading>What I Can Build</SectionHeading>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+            {[
+              "Business Websites",
+              "School Websites",
+              "AI Chatbots",
+              "Landing Pages",
+              "Dashboards",
+              "Admin Panels",
+              "Website Redesign",
+              "AI Agents"
+            ].map((item, index) => (
+              <div key={index} className="glass-card p-5 flex items-center gap-4 rounded-lg border border-[rgba(102,255,213,0.1)] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(100,255,218,0.1)] transition-all duration-300">
+                <i className="fas fa-check text-[var(--color-highlight)] text-xl"></i>
+                <span className="font-['Outfit'] text-[var(--color-primary)] text-[1.1rem] font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <TechStack addToRefs={addToRefs} />
 
       {/* Education & Certifications Section */}
