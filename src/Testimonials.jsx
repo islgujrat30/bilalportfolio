@@ -22,7 +22,7 @@ const testimonials = [
     role: "Principal",
     company: "Oakridge Academy",
     country: "🇬🇧 United Kingdom",
-    type: "AI Chatbot for School Website",
+    type: "AI Chatbot",
     image: men1
   },
   {
@@ -85,15 +85,10 @@ const Testimonials = () => {
               <div>
                 {/* Top: Stars, Verified & Tag */}
                 <div className="flex justify-between items-start mb-5">
-                  <div className="flex flex-col gap-2">
-                    <div className="flex text-yellow-400 text-sm">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <i key={i} className="fas fa-star"></i>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-1.5 text-[0.85rem] text-[var(--color-highlight)] font-medium bg-[rgba(102,255,213,0.1)] px-2 py-0.5 rounded-full w-max">
-                      <i className="fas fa-check-circle"></i> Verified
-                    </div>
+                  <div className="flex text-yellow-400 text-sm">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <i key={i} className="fas fa-star"></i>
+                    ))}
                   </div>
                   <div className="text-[0.75rem] font-['Fira_Code'] text-[var(--color-primary)] bg-[rgba(255,255,255,0.05)] px-3 py-1 rounded-full border border-[rgba(255,255,255,0.1)]">
                     {testimonial.type}
@@ -102,7 +97,7 @@ const Testimonials = () => {
 
                 {/* Body Text */}
                 <p className="text-[0.95rem] text-[var(--color-muted)] leading-relaxed italic line-clamp-5">
-                  "{testimonial.text}"
+                  {testimonial.text}
                 </p>
               </div>
 
@@ -112,8 +107,9 @@ const Testimonials = () => {
                   <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-['Outfit'] text-[var(--color-primary)] font-semibold text-[1.05rem]">
+                  <span className="font-['Outfit'] text-[var(--color-primary)] font-semibold text-[1.05rem] flex items-center gap-1.5">
                     {testimonial.name}
+                    <i className="fas fa-check-circle text-[var(--color-highlight)] text-[0.85rem]" title="Verified"></i>
                   </span>
                   <span className="text-[0.8rem] text-[var(--color-muted)]">
                     {testimonial.role} at <span className="text-[var(--color-highlight)]">{testimonial.company}</span>
