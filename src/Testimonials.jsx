@@ -8,7 +8,8 @@ const testimonials = [
     role: "Marketing Manager",
     company: "NovaTech Solutions",
     country: "🇺🇸 United States",
-    type: "Web Design"
+    type: "Web Design",
+    image: "/women1.jpg"
   },
   {
     rating: 5,
@@ -17,7 +18,8 @@ const testimonials = [
     role: "Principal",
     company: "Oakridge Academy",
     country: "🇬🇧 United Kingdom",
-    type: "AI Chatbot for School Website"
+    type: "AI Chatbot for School Website",
+    image: "/men1.jpg"
   },
   {
     rating: 5,
@@ -26,7 +28,8 @@ const testimonials = [
     role: "CEO",
     company: "Vertex Enterprises",
     country: "🇦🇪 UAE",
-    type: "Business Website"
+    type: "Business Website",
+    image: "/women2.jpg"
   },
   {
     rating: 5,
@@ -35,7 +38,8 @@ const testimonials = [
     role: "Operations Director",
     company: "Nexa Logistics",
     country: "🇨🇦 Canada",
-    type: "AI Agent"
+    type: "AI Agent",
+    image: "/men2.jfif"
   }
 ];
 
@@ -67,7 +71,7 @@ const Testimonials = () => {
       </div>
 
       <div className="relative w-full overflow-hidden flex" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-        <div className="flex animate-marquee whitespace-nowrap min-w-max">
+        <div className="flex animate-marquee whitespace-nowrap min-w-max py-4">
           {/* We duplicate the array to make the infinite scroll seamless */}
           {[...testimonials, ...testimonials].map((testimonial, idx) => (
             <div 
@@ -100,8 +104,8 @@ const Testimonials = () => {
 
               {/* Bottom: Profile Info */}
               <div className="mt-6 flex items-center gap-4 pt-5 border-t border-[rgba(255,255,255,0.05)]">
-                <div className="w-12 h-12 rounded-full bg-[rgba(102,255,213,0.15)] flex items-center justify-center text-[var(--color-highlight)] font-['Outfit'] font-bold text-xl border border-[rgba(102,255,213,0.3)]">
-                  {testimonial.name.charAt(0)}
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-[rgba(102,255,213,0.3)] shrink-0 bg-[rgba(102,255,213,0.05)]">
+                  <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-col">
                   <span className="font-['Outfit'] text-[var(--color-primary)] font-semibold text-[1.05rem]">
