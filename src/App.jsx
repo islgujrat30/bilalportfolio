@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import TechStack from './TechStack';
 import Chatbot from './Chatbot';
 import AIDigestSubscribe from './AIDigestSubscribe';
+import Testimonials from './Testimonials';
 
 const useIntersectionObserver = (options) => {
   const [elements, setElements] = useState([]);
@@ -394,6 +395,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* Contact Section */}
       <section id="contact" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[800px] mx-auto">
