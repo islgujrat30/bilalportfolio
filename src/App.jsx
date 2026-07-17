@@ -3,6 +3,7 @@ import TechStack from './TechStack';
 import Chatbot from './Chatbot';
 import AIDigestSubscribe from './AIDigestSubscribe';
 import Testimonials from './Testimonials';
+import Stats from './Stats';
 
 const useIntersectionObserver = (options) => {
   const [elements, setElements] = useState([]);
@@ -203,6 +204,8 @@ function App() {
           </div>
         </div>
       </main>
+
+      <Stats addToRefs={addToRefs} />
 
       {/* About Section */}
       <section id="about" className="py-[6rem] lg:py-[8rem] px-[1rem] lg:px-[4rem] max-w-[900px] mx-auto">
