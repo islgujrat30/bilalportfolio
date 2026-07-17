@@ -60,10 +60,15 @@ const Stats = ({ addToRefs }) => {
 
   return (
     <section className="py-[2rem] lg:py-[4rem] px-[1rem] lg:px-[4rem] max-w-[1100px] mx-auto z-10 relative">
-      <div 
-        ref={addToRefs} 
-        className="opacity-0 translate-y-10 transition-all duration-700 glass-card p-[2rem] md:p-[3rem] rounded-2xl border border-[rgba(102,255,213,0.15)] bg-[rgba(6,11,25,0.7)] backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-      >
+      <div ref={addToRefs} className="opacity-0 translate-y-10 transition-all duration-700">
+        <div className="flex items-center mb-10">
+          <h2 className="font-['Outfit'] text-[2.2rem] font-bold text-[var(--color-primary)]">
+            Statistics
+          </h2>
+          <div className="h-[1px] flex-grow max-w-[250px] ml-5 bg-[rgba(255,255,255,0.1)]"></div>
+        </div>
+        
+        <div className="glass-card p-[2rem] md:p-[3rem] rounded-2xl border border-[rgba(102,255,213,0.15)] bg-[rgba(6,11,25,0.7)] backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-[rgba(255,255,255,0.1)]">
           {stats.map((stat, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center text-center space-y-3 px-4 hover:-translate-y-1 transition-transform duration-300">
