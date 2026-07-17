@@ -52,10 +52,10 @@ const CountUp = ({ end, duration, suffix = "" }) => {
 
 const Stats = ({ addToRefs }) => {
   const stats = [
-    { label: "Projects", value: 15, suffix: "+" },
-    { label: "Business Solutions", value: 8, suffix: "+" },
-    { label: "Technologies", value: 10, suffix: "+" },
-    { label: "Responsive Designs", value: 100, suffix: "%" }
+    { label: "Projects", value: 15, suffix: "+", icon: "fas fa-laptop-code" },
+    { label: "Business Solutions", value: 8, suffix: "+", icon: "fas fa-chart-line" },
+    { label: "Technologies", value: 10, suffix: "+", icon: "fas fa-layer-group" },
+    { label: "Responsive Designs", value: 100, suffix: "%", icon: "fas fa-mobile-alt" }
   ];
 
   return (
@@ -74,8 +74,9 @@ const Stats = ({ addToRefs }) => {
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col items-center justify-center text-center space-y-3 px-4 hover:-translate-y-1 transition-transform duration-300">
                 <CountUp end={stat.value} duration={2500} suffix={stat.suffix} />
-                <p className="text-[var(--color-highlight)] font-['Fira_Code'] tracking-widest text-[0.8rem] md:text-[0.9rem] uppercase">
-                  {stat.label}
+                <p className="flex items-center gap-2 text-[var(--color-highlight)] font-['Fira_Code'] tracking-widest text-[0.8rem] md:text-[0.9rem] uppercase">
+                  <i className={`${stat.icon} text-[1rem]`}></i>
+                  <span>{stat.label}</span>
                 </p>
               </div>
             ))}
