@@ -53,7 +53,7 @@ const CountUp = ({ end, duration, suffix = "" }) => {
 const Stats = ({ addToRefs }) => {
   const stats = [
     { label: "Projects", value: 15, suffix: "+" },
-    { label: "Hours Coding", value: 100, suffix: "+" },
+    { label: "Business Solutions", value: 8, suffix: "+" },
     { label: "Technologies", value: 10, suffix: "+" },
     { label: "Responsive Designs", value: 100, suffix: "%" }
   ];
